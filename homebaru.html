@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planit Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        #sidebar {
+            background-color: #343a40;
+            color: white;
+            width: 250px;
+            flex-shrink: 0;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            height: 100vh; /* Make sidebar full height */
+            position: fixed; /* Fixed position for sticky sidebar */
+            z-index: 1; /* Ensure it's above the content */
+        }
+
+        /* #sidebar .logo {
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        } */
+
+        #sidebar .nav-item {
+            width: 100%;
+        }
+
+        #sidebar .nav-link {
+            padding: 10px 20px;
+            color: #adb5bd;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        #sidebar .nav-link:hover {
+            background-color: #495057;
+            color: white;
+        }
+
+        #sidebar .nav-link i {
+            margin-right: 10px;
+        }
+
+        #content {
+            flex-grow: 1;
+            padding: 20px;
+            margin-left: 250px; /* Adjust margin to accommodate the sidebar */
+            overflow-y: auto; /* Enable vertical scrolling for content */
+        }
+
+        .card {
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            margin-bottom: 20px;
+            background-color: white;
+        }
+
+        .card-header {
+            background-color: #e9ecef;
+            padding: 0.75rem 1.25rem;
+            border-bottom: 1px solid #dee2e6;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 1.25rem;
+        }
+
+        .activity-item {
+            background-color: #f0f8ff; /* Light blue background */
+            border: 1px solid #add8e6; /* Light blue border */
+            border-radius: 0.25rem;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .activity-time {
+            background-color: #6c757d; /* Gray */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            margin-right: 10px;
+        }
+
+        .activity-tag {
+            background-color: #007bff; /* Blue */
+            color: white;
+            padding: 5px 8px;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        .add-notes-button {
+            background-color: #28a745; /* Green */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .note-card {
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: calc(50% - 5px); /* Two cards side by side with spacing */
+        }
+
+        .note-card h6 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .note-card p {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+
+        .upcoming-event-item {
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .upcoming-event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-day {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #343a40;
+        }
+
+        .event-details {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .event-time {
+            background-color: #ffc107; /* Yellow */
+            color: #212529;
+            padding: 3px 6px;
+            border-radius: 0.25rem;
+            margin-right: 5px;
+        }
+
+        .event-tag {
+            background-color: #17a2b8; /* Cyan */
+            color: white;
+            padding: 3px 6px;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+        }
+
+        .todo-list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .todo-list-item input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .other-notes-link {
+            display: flex;
+            align-items: center;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .other-notes-link i {
+            margin-left: 5px;
+        }
+
+        .search-bar {
+            padding: 10px 20px;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            #sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                flex-direction: row;
+                align-items: center;
+                padding: 10px 0;
+                overflow-x: auto;
+            }
+
+            #sidebar .logo {
+                margin-bottom: 0;
+                margin-right: 20px;
+            }
+
+            #sidebar .nav-item {
+                width: auto;
+            }
+
+            #sidebar .nav-link {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+
+            #sidebar .nav-link i {
+                margin-right: 5px;
+            }
+
+            #content {
+                margin-left: 0;
+                padding-top: 70px; /* Adjust padding for the static top sidebar */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3">
+        <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none logo">
+            Planit
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                    <i class="bi bi-speedometer2"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-person"></i>
+                    Profile
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-stickies"></i>
+                    Notes
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-calendar"></i>
+                    Calendar
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white">
+                    <i class="bi bi-gear"></i>
+                    Setting
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <!-- <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://via.placeholder.com/32" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>User</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+        </div> -->
+    </div>
+
+    <div id="content">
+        <div class="search-bar">
+            <input type="text" class="form-control" placeholder="Search...">
+        </div>
+
+        <h2>Ongoing Activities</h2>
+        <div class="card">
+            <div class="card-body">
+                <div class="activity-item">
+                    <div class="activity-header">
+                        <span class="activity-time">09.20 - 10.50</span>
+                        <span class="activity-tag">AS04</span>
+                        <button class="add-notes-button">+ Add new notes</button>
+                    </div>
+                    <h5>Web Programming</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card mb-3">
+                                <img src="https://via.placeholder.com/150/87CEEB/000000?Text=CSS+HTML" class="card-img-top" alt="CSS HTML">
+                                <div class="card-body">
+                                    <h6 class="card-title">CSS HTML</h6>
+                                    <p class="card-text"><small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mb-3">
+                                <img src="https://via.placeholder.com/150/FFA07A/000000?Text=Java" class="card-img-top" alt="Java">
+                                <div class="card-body">
+                                    <h6 class="card-title">Java</h6>
+                                    <p class="card-text"><small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-link">More</a>
+                </div>
+            </div>
+        </div>
+
+        <h2>Your Current Notes</h2>
+        <div class="d-flex flex-wrap">
+            <div class="note-card me-2">
+                <h6>Logaritma</h6>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.</p>
+            </div>
+            <div class="note-card">
+                <h6>Arsitekom</h6>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.</p>
+            </div>
+        </div>
+        <div class="mt-2">
+            <a href="#" class="other-notes-link">Other Notes <i class="bi bi-arrow-right"></i></a>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h2>Upcoming Event</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="upcoming-event-item">
+                            <div class="event-day">Today</div>
+                            <div class="event-details">
+                                <span class="event-time">08.30 - 10.00</span>
+                                Database
+                                <span class="event-tag">AS04</span>
+                            </div>
+                        </div>
+                        <div class="upcoming-event-item">
+                            <div class="event-day">Friday</div>
+                            <div class="event-details">
+                                <span class="event-time">08.30 - 10.00</span>
+                                Pancasila
+                                <span class="event-tag">AS04</span>
+                            </div>
+                        </div>
+                        <div class="upcoming-event-item">
+                            <div class="event-day">Friday</div>
+                            <div class="event-details">
+                                <span class="event-time">10.30 - 12.00</span>
+                                Database
+                                <span class="event-tag">AS04</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>To Do List</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="todo-list-item">
+                            <input type="checkbox">
+                            Script MC IWD
+                        </div>
+                        <div class="todo-list-item">
+                            <input type="checkbox">
+                            OOP Funfact Java
+                        </div>
+                        <div class="todo-list-item">
+                            <input type="checkbox">
+                            Revisi design feeds
+                        </div>
+                        <div class="todo-list-item">
+                            <input type="checkbox">
+                            PPT Prodi Day
+                        </div>
+                        <div class="todo-list-item">
+                            <input type="checkbox">
+                            Frame ig
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
