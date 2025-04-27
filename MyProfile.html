@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planit Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .row {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .body{
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #F6F6F6;
+        }
+
+        .btn{
+            border: 50px;
+            border: 1px solid #383838;
+            color: white;
+            border-radius: 20px;
+        }
+
+        .btn-sidebar-wrap{
+            max-width: 48px;
+            color: white;
+            width:38px;
+            height:38px;
+            padding:0;                       /* hapus padding besar milik .btn */
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:#383838;
+            color:#fff;
+            border:none;
+            border-radius:8px;
+        }
+
+        .sidebar{
+            height: 100vh;
+            width: 200px;
+            background: #383838;
+            color: white;
+            display: flex;
+            align-items: stretch;
+            --bs-offcanvas-bg:#383838;
+            position: fixed;
+        }
+
+        .btn-sidebar{
+            color: white;
+            
+        }
+
+        .btn-sidebar-active{
+            color: #383838;
+            background-color: white;
+            font-weight: bold;
+        }
+
+        .btn-sidebar-active:hover{
+            color: #383838;
+            background-color: white;
+            font-weight: bold;
+        }
+
+        .btn-sidebar:hover{
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #F6F6F6;
+            border-color:#383838 ;
+        }
+
+        .btn-read{
+            background-color: #383838;
+            width: 60px;
+            max-width: 60px;
+            min-width: 60px;
+            height: 25px;
+            text-align: center;
+            line-height: 0.9;
+            font-size: smaller;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-read:hover{
+            background-color: #383838e0;
+            border-color: #383838;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+        }
+        
+        .main-content{
+            margin-left: 200px;
+        }
+
+        .search-bar{
+            border: 1px solid #383838;
+            border-radius: 20px;
+        }
+
+        .btn-search{
+            background-color: #383838;
+            width: 150px;
+        }
+
+        .btn-search:hover{
+            background-color: #383838e0;
+            border-color: #383838;
+            color: white;
+        }
+
+        .content{
+            border: 1px solid #383838;
+        }
+
+        .sidebar{
+            --bs-offcanvas-bg:#383838;        /* ganti warna var Bootstrap */
+            background:#383838 !important;    /* paksa latar gelap di desktop */
+        }
+
+        
+        .btn-sidebar-wrap:hover,
+        .btn-sidebar-wrap:focus{
+            background:#4a4a4a;
+        }
+        .card-induk-current-notes{
+            border: 1px solid #383838;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-notes-induk{
+            border: 1px solid #383838;
+            border-radius: 4px;
+        }
+
+        .card-image{
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #383838;
+        }
+        
+        .header-catatan-mk-sekarang{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @media (min-width: 992px) {           /* ≥ lg, sidebar tampak statis */
+            .main-content {
+                margin-left: 200px;               /* lebar sidebarmu */
+            }
+        }
+
+        @media (max-width: 991.98px) {        /* < lg, sidebar tersembunyi */
+            .main-content {
+                margin-left: 0; 
+                              
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <body style="background-color: #fefefe;">
+        <div class="container-fluid">
+          <div class="row no-gutters">
+            <!-- Hanya muncul di layar < lg -->
+            <div class="d-lg-none d-flex top-0 start-0 m-3">
+                <div class="d-flex ">
+                    <button class="btn btn-sidebar-wrap "
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offSidebar"
+                        aria-controls="offSidebar">
+                        <i class="bi bi-list" style="font-size:1.5rem;"></i>
+                    </button>
+                    <h3 class="ms-2">PlantIt</h3>
+                    
+                </div>   
+            </div>
+
+            <!-- Sidebar -->
+            <div id="offSidebar" class="offcanvas-lg offcanvas-start text-white sidebar" tabindex="-1">
+                <div class="offcanvas-header d-lg-none">
+                    <h5 class="mb-0">PlanIt</h5>
+                    <button type="button" class="btn-close btn-close-white"
+                            data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#offSidebar">
+                    </button>
+                </div>
+
+                <div class=" offcanvas-body p-3 d-flex flex-column align-items-start">
+                    <!-- ===== isi sidebar MU tetap sama di sini ===== -->
+                    <h3 class="mb-4 mt-4 d-none d-lg-block">PlanIt</h3>
+
+                    <a href="profile.html"   class="btn btn-sidebar w-100 mt-2 mb-3 text-start">
+                    <i class="bi bi-person-fill me-2"></i> Profile
+                    </a>
+                    <a href="home.html" class="btn btn-sidebar w-100 mb-3 text-start">
+                    <i class="bi bi-house-fill me-2"></i> Dashboard
+                    </a>
+                    <a href="notes.html" class="btn btn-sidebar-active w-100 mb-3 text-start">
+                    <i class="bi bi-book-fill me-2"></i> Notes
+                    </a>
+                    <a href="calendar.html" class="btn btn-sidebar w-100 mb-3 text-start">
+                    <i class="bi bi-calendar-fill me-2"></i> Calendar
+                    </a>
+                    <a href="setting.html" class="btn btn-sidebar w-100 mb-3 text-start">
+                    <i class="bi bi-gear-fill me-2"></i> Setting
+                    </a>
+                </div>
+            </div>
+
+      
+            <!-- Main Content -->
+            <div class="main-content col-md-10 col-sm-12">
+                <div class="container-fluid">
+                    <div class="d-none d-lg-flex d-flex justify-content-between align-items-center mb-4 mt-4">
+                        <div class="d-none d-lg-flex align-items-center">
+                          <img src="https://i.pinimg.com/736x/bd/af/6d/bdaf6d8fe7871aa0a0fdf89f0587fd69.jpg" alt="User Avatar" class="rounded-circle me-2" width="40" height="40">
+                          <div>
+                            <strong class="p-0 m-0">User</strong><br>
+                            <small class="text-muted m-0 p-0">Start your day with PlanIt</small>
+                          </div>
+                        </div>
+                        <div>
+                          <form class="d-flex" role="search">
+                              <input class="search-bar form-control me-2" type="search" placeholder="Find something here.." aria-label="Search">
+                              <button class="btn btn-search" type="submit">
+                                <i class="bi bi-search"></i> Search
+                              </button>
+                          </form>
+                        </div>
+                        
+                    </div>
+                     
+                    
+
+                    <!-- CURRENT NOTES -->
+                    <div class="card m-1 card-induk-current-notes p-3 h-100 mb-3"
+                    style="background-color:#ecf3fd;">
+                        <p style="font-size: x-large; margin: 0;"><b>My Profile</b></p>
+                        <hr class="">
+
+                        <p>Hello! My name is Arsya Aulia Amira, and I am 
+                            currently pursuing my studies in Informatics at 
+                            university. With a deep interest in technology 
+                            and digital creativity, I am passionate about 
+                            exploring how design and innovation can come 
+                            together to create meaningful digital 
+                            experiences. Throughout my academic journey, I 
+                            have actively participated in organizations 
+                            related to informatics and creative media, which 
+                            has enriched both my technical and creative 
+                            skill sets.</p>
+
+                        <br>
+
+                        <p>One of my strongest passions is graphic design. I 
+                            find fulfillment in bringing ideas to life 
+                            visually, whether through social media content, 
+                            promotional materials, or digital documentation. 
+                            I enjoy working independently to refine every 
+                            detail in a design, but I also value 
+                            constructive feedback that helps me deliver even 
+                            better results. My experience includes creating 
+                            content for student organizations, where I 
+                            combine aesthetic appeal with clarity and 
+                            purpose.</p>
+
+                        <br>
+
+                        <p>As I continue to grow both academically and 
+                            professionally, I aim to deepen my expertise in 
+                            design while integrating it with my informatics 
+                            knowledge. I believe that creativity and 
+                            technology are powerful when used together, and 
+                            I am committed to developing solutions that are 
+                            not only functional but also visually engaging. 
+                            Thank you for taking the time to learn more 
+                            about me!</p>
+                    </div>
+                    
+                    
+                        
+                    
+                </div>   
+            </div>
+      
+          </div>
+        </div>
+      </body>
+      
+        
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
