@@ -9,86 +9,110 @@
     <script src="js/bootstrap.bundle.min.js"></script>
 
     <style>
-        body {
+
+        .row {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .body{
             font-family: sans-serif;
             margin: 0;
             background-color: #F6F6F6;
         }
 
-        .hr {
-            margin: 0px; 
-        }
-
-        .btn {
+        .btn{
             border: 50px;
             border: 1px solid #383838;
             color: white;
             border-radius: 20px;
         }
 
-        /* Sidebar Styles */
-        .sidebar {
+        .btn-sidebar-wrap{
+            max-width: 48px;
+            color: white;
+            width:38px;
+            height:38px;
+            padding:0;                       /* hapus padding besar milik .btn */
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:#383838;
+            color:#fff;
+            border:none;
+            border-radius:8px;
+        }
+
+        .btn-sidebar-wrap:hover, .btn-sidebar-wrap:focus{
+            background-color: #4a4a4a;
+        }
+
+        .sidebar{
             height: 100vh;
             width: 200px;
-            background-color: #383838;
             color: white;
             display: flex;
             align-items: stretch;
-            z-index: 1000;
             position: fixed;
-            transition: all 0.3s;
+            --bs-offcanvas-bg:#383838;
+            background: #383838;
         }
 
-        .btn-sidebar {
+        .sidebar{
+            --bs-offcanvas-bg:#383838;        /* ganti warna var Bootstrap */
+            background:#383838 !important;    /* paksa latar gelap di desktop */
+        }
+
+        .btn-sidebar{
             color: white;
+            
         }
 
-        .btn-sidebar-active {
+        .btn-sidebar-active{
             color: #383838;
             background-color: white;
             font-weight: bold;
         }
 
-        .btn-sidebar-active:hover {
+        .btn-sidebar-active:hover{
             color: #383838;
             background-color: white;
             font-weight: bold;
         }
 
-        .btn-sidebar:hover {
+        .btn-sidebar:hover{
             background-color: rgba(255, 255, 255, 0.1);
             color: #F6F6F6;
             border-color:#383838 ;
         }
         
-        .main-content {
+        .main-content{
             margin-left: 200px;
-            transition: all 0.3s;
         }
 
-        .content {
+        .content{
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border: 1px solid #383838;
             border-radius: 4px;
         }
 
-        .search-bar {
+        .search-bar{
             border: 1px solid #383838;
             border-radius: 20px;
         }
 
-        .btn-search {
+        .btn-search{
             background-color: #383838;
             width: 150px;
         }
 
-        .btn-search:hover {
+        .btn-search:hover{
             background-color: #383838e0;
             border-color: #383838;
             color: white;
         }
 
-        .session-detail {
+        .session-detail{
             background-color: #6c757d;
             color: white;
             border: 1px solid #6c757d;
@@ -96,297 +120,307 @@
             margin-top: 10px;
             text-align: center;
             margin-right: 10px;
+            height: 30px;
         }
 
-        .btn-add-notes {
+        .btn-add-notes{
             background-color: #383838;
             color: #F6F6F6;
             border: 1px solid #383838;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            
         }
 
-        .btn-add-notes:hover {
+        .btn-add-notes:hover{
             background-color: #383838e0;
             border-color: #383838;
             color: white;
         }
 
-        .catatan-mk-sekarang {
+        .catatan-mk-sekarang{
             background-color: white;
             border: 1px solid #383838;
             border-radius: 6px;
             display: flex;
-            flex-direction: column;
+            
         }
 
-        .catatan-mk-sekarang img {
-            width: 100%;
-            height: auto;
-            max-height: 150px;
+        .catatan-mk-sekarang img{
+            width: 160px;
+            height: 110px;
             border-radius: 4px;
-            object-fit: cover;
+            
         }
 
-        .btn-more {
-            background-color: #2B5288;
+        .btn-more{
+            background-color: #ffffff;
+            color: #383838;
+            align-items: center;
+            height: 35x;
+            max-height: 35px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-more:hover{
+            background-color:  #ffffffeb;
+            color: #383838;
+            font-weight: bold;
+            border: 1px solid #383838;
+            box-shadow: none;
+        }
+
+        .btn-more-sm{
+            background-color: #ffffff;
+            color: #383838;
             width: 60px;
+            max-width: 60px;
+            min-width: 60px;
             height: 25px;
             text-align: center;
             line-height: 0.9;
             font-size: smaller;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-more:hover {
-            background-color: #2b5288de;
-            border-color: #2B5288;
+        .btn-sm:hover{
+            background-color:  #ffffffeb;
+            color: #383838;
+            font-weight: bold;
+            border: 1px solid #383838;
+            box-shadow: none;
+        }
+
+        .btn-read{
+            background-color: #383838;
+            width: 60px;
+            max-width: 60px;
+            min-width: 60px;
+            height: 25px;
+            text-align: center;
+            line-height: 0.9;
+            font-size: smaller;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-read:hover{
+            background-color: #383838e0;
+            border-color: #383838;
             color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
         }
 
-        .header-catatan-mk-sekarang {
+        .header-catatan-mk-sekarang{
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
         }
 
-        .header-catatan-mk-sekarang h5 {
+        .header-catatan-mk-sekarang h5{
             line-height: 0.9;
             margin: 0;
         }
 
-        .upcoming-event {
+        .upcoming-event{
             background-color: #f6f6f6;
             border: 1px solid #383838;
             border-radius: 5px;
         }
 
-        .card-notes {
+        .card-notes{
             background-color: #F6F6F6;
-            width: 100%;
-            height: auto;
+            width: 260px;
+            height: 300px;
             margin-top: 10px;
             border: 1px solid #383838;
-            border-radius: 6px;
+            border-radius:6px ;
         }
 
-        .card-notes img {
-            width: 100%;
+        .card-notes img{
+            width: 240px;
             height: 150px;
             object-fit: cover;
             border-radius: 4px;
             border: 1px solid #383838;
         }
 
-        .current-notes {
+        .current-notes{
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
         }
 
-        /* Mobile Toggle Button */
-        .sidebar-toggle {
-            display: none;
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 1050;
-            background-color: #383838;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 1.2rem;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .sidebar {
-                transform: translateX(-200px);
-            }
-            
-            .sidebar.active {
-                transform: translateX(0);
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
-            .main-content.active {
-                margin-left: 200px;
-            }
-            
-            .sidebar-toggle {
-                display: block;
-            }
-            
-            .current-notes {
-                justify-content: center;
+        /* Desktop */
+        @media(min-width: 992px){
+            .main-content{
+                margin-left: 200px ;
             }
         }
 
-        @media (max-width: 768px) {
-            .search-form {
-                width: 100%;
-                margin-top: 15px;
+        /* hp */
+        @media(max-width: 991.98px){
+            .main-content{
+                margin-left: 0px ; 
             }
-            
-            .user-info {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .header-section {
-                flex-direction: column;
-            }
-            
-            .session-detail {
-                width: 100% !important;
-                margin-right: 0 !important;
-                margin-bottom: 5px;
-            }
-            
-            .activity-details {
-                flex-direction: column;
-            }
-            
-            .btn-add-notes {
-                width: 100%;
-                margin-top: 10px;
-            }
-        }
 
-        @media (max-width: 576px) {
-            .card-notes {
-                width: 100%;
-            }
             
-            .catatan-mk-sekarang {
-                flex-direction: column;
-            }
-            
-            .catatan-mk-sekarang img {
-                width: 100%;
-                height: auto;
-            }
         }
+        
     </style>
 </head>
 
 <body>
-    <!-- Mobile Toggle Button -->
-    <button class="sidebar-toggle" id="sidebarToggle">
-        <i class="bi bi-list"></i>
-    </button>
-
-    <div class="container-fluid">
-      <div class="row no-gutters">
-  
-        <!-- Sidebar -->
-        <div class="col-2 bg-dark sidebar vh-100 d-flex flex-column align-items-start p-3" id="sidebar">
-          <h3 class="mb-4 mt-4 text-white">PlanIt</h3>
-          <a href="profile.html" class="btn btn-sidebar w-100 mt-2 mb-3 text-start">
-            <i class="bi bi-person-fill me-2"></i> Profile
-          </a>
-          <a href="#" class="btn btn-sidebar-active w-100 mb-3 text-start">
-            <i class="bi bi-house-fill me-2"></i> Dashboard
-          </a>
-          <a href="notes.html" class="btn btn-sidebar w-100 mb-3 text-start">
-            <i class="bi bi-book-fill me-2"></i> Notes
-          </a>
-          <a href="#" class="btn btn-sidebar w-100 mb-3 text-start">
-            <i class="bi bi-calendar-fill me-2"></i> Calendar
-          </a>
-          <a href="#" class="btn btn-sidebar w-100 mb-3 text-start">
-            <i class="bi bi-gear-fill me-2"></i> Setting
-          </a>
-        </div>
-  
-        <!-- Main Content -->
-        <div class="col main-content mb-4" id="mainContent">
-
-            <!-- Header: User Info + Search Bar -->
-            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 mt-4 header-section">
-              <div class="d-flex align-items-center user-info">
-                <img src="https://i.pinimg.com/736x/bd/af/6d/bdaf6d8fe7871aa0a0fdf89f0587fd69.jpg" alt="User Avatar" class="rounded-circle me-2" width="40" height="40">
-                <div>
-                  <strong>User</strong><br>
-                  <small class="text-muted">Start your day with PlanIt</small>
-                </div>
-              </div>
-              <form class="d-flex search-form" role="search">
-                <input class="search-bar form-control me-2" type="search" placeholder="Find something here.." aria-label="Search">
-                <button class="btn btn-search" type="submit">
-                  <i class="bi bi-search"></i> Search
+    <!-- SIDEBAR -->
+    <body>
+        <div class="container-fluid">
+          <div class="row no-gutters">
+            
+            <!-- Hanya tampil di < lg -->
+            <div class="d-lg-none d-flex top-0 start-0 m-3">
+                <button class="btn btn-sidebar-wrap" 
+                    type="button" 
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offSidebar" 
+                    aria-controls="offSidebar">
+                    <i class="bi bi-list" style="font-size:1.5rem;"></i>
                 </button>
-              </form>
+                <h2 class="ms-2">PlantIt</h2>
+
+
+            </div>
+
+            <!-- Sidebar -->
+            <div id="offSidebar" class="offcanvas-lg offcanvas-start text-white sidebar" tabindex="-1">
+                <div class="offcanvas-header d-lg-none">
+                    <h5 class="mb-0">PlantIt</h5>
+                    <button type="button" class="btn-close btn-close-white" 
+                    data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#offSidebar">
+                        
+                    </button>
+                </div>
+
+                <div class="offcanvas-body p-3 d-flex flex-column align-items-start">
+                    <h3 class="mb-4 mt-4 d-none d-lg-block">PlanIt</h3>
+
+                    <a href="profile.html" class="btn btn-sidebar w-100 mt-2 mb-3 text-start">
+                        <i class="bi bi-person-fill me-2"></i> Profile
+                    </a>
+                    <a href="#" class="btn btn-sidebar-active w-100 mb-3 text-start">
+                        <i class="bi bi-house-fill me-2"></i> Dashboard
+                    </a>
+                    <a href="notes.html" class="btn btn-sidebar w-100 mb-3 text-start">
+                        <i class="bi bi-book-fill me-2"></i> Notes
+                    </a>
+                    <a href="calendar.html" class="btn btn-sidebar w-100 mb-3 text-start">
+                        <i class="bi bi-calendar-fill me-2"></i> Calendar
+                    </a>
+                    <a href="setting.html" class="btn btn-sidebar w-100 mb-3 text-start">
+                        <i class="bi bi-gear-fill me-2"></i> Setting
+                    </a>
+                </div>
             </div>
       
-            <!-- Card Section -->
-            <div class="row g-4">
+            <!-- Main Content -->
+            <div class="col main-content mb-4">
 
-              <!-- Ongoing Activities -->
-              <div class="col-lg-8 col-md-12">
-                <div class="card p-3 h-100 content"
-                style="background-color: #E3F1FE;">
-                    <h5>Ongoing Activities</h5>
-                    <hr style="margin-top: 0; margin-bottom: 10px;">
-                    <h3><b>WEBSITE PROGRAMMING</b></h3>
-                    <div class="d-flex flex-wrap align-items-center activity-details">
-                        <p class="session-detail" style="width: 140px;"> 
-                            <i class="bi bi-clock-fill"></i> 
-                            08.20 - 10.50
-                        </p>
-                        <div>
-                            <p class="session-detail" style="width: 90px;"> 
-                                <i class="bi bi-door-closed-fill"></i> 
-                                A504
-                            </p>
-                        </div>
-                        <div>
-                            <button class="btn btn-add-notes btn-sm" type="button" href="#">
-                                <i class="bi bi-plus-square-fill"></i> Add New Note
-                            </button>
-                        </div>
+                <!-- Header: User Info + Search Bar -->
+                <div class="d-none d-lg-flex  justify-content-between align-items-center mb-4 mt-4">
+                  <div class="align-items-center">
+                    <img src="https://i.pinimg.com/736x/bd/af/6d/bdaf6d8fe7871aa0a0fdf89f0587fd69.jpg" alt="User Avatar" class="rounded-circle me-2" width="40" height="40">
+                    <div>
+                      <strong class="p-0 m-0">User</strong><br>
+                      <small class="text-muted m-0 p-0">Start your day with PlanIt</small>
                     </div>
-
-                    <hr style="margin-top: 0; margin-bottom: 10px;">
-                    <div class="catatan-mk-sekarang p-2 mb-2">
-                        <img src="Gif 1.gif" alt="">
-                        <div class="m-2">
-                            <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
-                                <h5><b>HTML & CSS</b></h5>
-                                <a href="#" class="btn btn-more">More</a>
-                            </div>
-                            <hr class="mt-2 mb-1">
-                            <p style="font-size: small; margin-top: 0; margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt dictum justo, vitae molestie arcu egestas a. Integer accumsan tempus lectus quis lacinia. Aenean at nisl facilisis lectus semper ultrices.  </p>
-                        </div>
-                    </div>
-
-                    <div class="catatan-mk-sekarang p-2">
-                        <img src="Gif 2.gif" alt="">
-                        <div class="m-2">
-                            <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
-                                <h5><b>FRONTEND</b></h5>
-                                <a href="#" class="btn btn-more">More</a>
-                            </div>
-                            <hr class="mt-2 mb-1">
-                            <p style="font-size: small; margin-top: 0; margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt dictum justo, vitae molestie arcu egestas a. Integer accumsan tempus lectus quis lacinia. Aenean at nisl facilisis lectus semper ultrices. </p>
-                        </div>
-                    </div>
+                  </div>
+                  <div>
+                    <form class="d-flex" role="search">
+                        <input class="search-bar form-control me-2" type="search" placeholder="Find something here.." aria-label="Search">
+                        <button class="btn btn-search" type="submit">
+                          <i class="bi bi-search"></i> Search
+                        </button>
+                    </form>
+                  </div>
+                  
                 </div>
-              </div>
-      
-              <!-- Upcoming Events -->
-              <div class="col-lg-4 col-md-12">
-                <div class="card p-3 h-100 content">
-                    <h5>Upcoming Event</h5>
-                    <hr class="mt-0 mb-1">
+          
+                <!-- Card Section -->
+                <div class="row g-4 ">
 
-                    <h6 class="pt-1"><b>TODAY</b></h6>
+                  <!-- Ongoing Activities -->
+                  <div class="col-md-8 ">
+                    <div class="card p-3 h-100 content"
+                        style="background-color: #E3F1FE;">
+                        <!-- Isi konten ongoing activities di sini -->
+                            <h5>Ongoing Activities</h5>
+                            <hr style="margin-top: 0; margin-bottom: 10px;">
+                            <h3><b>WEBSITE PROGRAMMING</b></h3>
+                            
+                            <div class="d-flex align-items-center">
+                                <p class="session-detail" style="width: 140px;"> 
+                                    <i class="bi bi-clock-fill"></i> 
+                                    08.20 - 10.50
+                                </p>
+                                <div>
+                                    <p class="session-detail" style="width: 90px;"> 
+                                        <i class="bi bi-door-closed-fill"></i> 
+                                        A504
+                                    </p>
+                                </div>
+                                <div>
+                                    <button class="btn btn-add-notes" type="button" href="#">
+                                        <i class="bi bi-plus-square-fill me-2"></i> Add New Note
+                                    </button>
+                                </div>
+                            </div>
 
-                    <div class="upcoming-event p-2 mb-2">
+
+                            <hr style="margin-top: 0; margin-bottom: 10px;">
+                            <div class="catatan-mk-sekarang p-2 mb-2">
+                                <img src="Gif 1.gif" alt="">
+                                <div class="m-2">
+                                    <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
+                                        <h5><b>HTML & CSS</b></h5>
+                                        <a href="#" class="btn btn-read">Read</a>
+                                    </div>
+                                    <hr class="mt-2 mb-1">
+                                    <p style="font-size: small; margin-top: 0; margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt dictum justo, vitae molestie arcu egestas a. Integer accumsan tempus lectus quis lacinia. Aenean at nisl facilisis lectus semper ultrices.  </p>
+                                </div>
+                            </div>
+
+                            <div class="catatan-mk-sekarang p-2">
+                                <img src="Gif 2.gif" alt="">
+                                <div class="m-2">
+                                    <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
+                                        <h5><b>FRONTEND</b></h5>
+                                        <a href="#" class="btn btn-read">Read</a>
+                                    </div>
+                                    <hr class="mt-2 mb-1">
+                                    <p style="font-size: small; margin-top: 0; margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt dictum justo, vitae molestie arcu egestas a. Integer accumsan tempus lectus quis lacinia. Aenean at nisl facilisis lectus semper ultrices. </p>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-more mt-2">More</button>
+
+                    </div>
+                  </div>
+          
+                  <!-- Upcoming Events -->
+                  <div class="col-md-4">
+                    <div class="card p-3 h-100 content">
+                      <!-- Isi konten upcoming event di sini -->
+                       <div class="d-flex justify-content-between">
+                            <h5>Upcoming Event</h5>
+                            <button class="btn btn-sm btn-more-sm" style="width: 60px;">More</button>
+
+                       </div>
+                      
+                      <hr class="mt-0 mb-1">
+
+                      <h6 class="pt-1"><b>TODAY</b></h6>
+
+                      <div class="upcoming-event p-2 mb-2">
                         <h5 class="p-0 m-0">Database</h5>
-                        <div class="d-flex flex-wrap">
+                        <div class="d-flex">
                             <p class="session-detail" style="width: 140px;">
                                 <i class="bi bi-clock-fill"></i> 
                                 08.20 - 10.50
@@ -396,11 +430,11 @@
                                 A504
                             </p>
                         </div>
-                    </div>
+                      </div>
 
-                    <div class="upcoming-event p-2 mb-1">
+                      <div class="upcoming-event p-2 mb-1">
                         <h5 class="p-0 m-0">Database</h5>
-                        <div class="d-flex flex-wrap">
+                        <div class="d-flex">
                             <p class="session-detail" style="width: 140px;">
                                 <i class="bi bi-clock-fill"></i> 
                                 10.50 - 11.30
@@ -410,13 +444,13 @@
                                 A302
                             </p>
                         </div>
-                    </div>
+                      </div>
 
-                    <hr>
-                    <h6 class="pt-1"><b>FRIDAY</b></h6>
-                    <div class="upcoming-event p-2 mb-2">
+                      <hr>
+                      <h6 class="pt-1"><b>FRIDAY</b></h6>
+                      <div class="upcoming-event p-2 mb-2">
                         <h5 class="p-0 m-0">Becoming Indonesia</h5>
-                        <div class="d-flex flex-wrap">
+                        <div class="d-flex">
                             <p class="session-detail" style="width: 140px;">
                                 <i class="bi bi-clock-fill"></i> 
                                 08.20 - 10.50
@@ -426,68 +460,77 @@
                                 A410
                             </p>
                         </div>
+                      </div>
+
+
                     </div>
-                </div>
-              </div>
-      
-              <!-- Your Current Notes -->
-              <div class="col-lg-8 col-md-12">
-                <div class=" p-3 h-100 content">
-                    <h5>Your Current Notes</h5>
-                    <hr class="m-0 p-0">
-                    <div class="current-notes">
-                        <div class="card-notes p-2">
-                            <img src="Gif 3.gif" alt="">
-                            <div class="mt-2">
-                                <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
-                                    <h5><b>LOGARITMA</b></h5>
-                                    <a href="#" class="btn btn-more">More</a>
+                  </div>
+          
+                  <!-- Your Current Notes -->
+                  <div class="col-md-8">
+                    <div class=" p-3 h-100 content">
+                      <!-- Isi konten your notes di sini -->
+                       <div class="d-flex justify-content-between">
+                            <h5>Your Current Notes</h5>
+                            <button class="btn btn-sm btn-more-sm" style="width: 60px;">More</button>
+                       </div>
+                      
+                      <hr class="m-0 p-0">
+                        <div class="current-notes justify-content-between ">
+                            <div class="card-notes p-2">
+                                <img src="Gif 3.gif" alt="">
+                                <div class="mt-2">
+                                    <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
+                                        <h5><b>MY PROFILE</b></h5>
+                                        <a href="#" class="btn btn-read">Read</a>
+                                    </div>
+                                    <hr class="mt-2 mb-1">
+                                    <p style="font-size: small; margin-top: 0; margin-bottom: 0;">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt..  
+                                    </p>
                                 </div>
-                                <hr class="mt-2 mb-1">
-                                <p style="font-size: small; margin-top: 0; margin-bottom: 0;">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt..  
-                                </p>
+                            </div>
+
+                            <div class="card-notes p-2">
+                                <img src="Gif 5.gif" alt="">
+                                <div class="mt-2">
+                                    <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
+                                        <h5><b>BOOTSTRAP</b></h5>
+                                        <a href="#" class="btn btn-read">Read</a>
+                                    </div>
+                                    <hr class="mt-2 mb-1">
+                                    <p style="font-size: small; margin-top: 0; margin-bottom: 0;">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt..  
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="card-notes p-2">
+                                <img src="Gif 4.gif" alt="">
+                                <div class="mt-2">
+                                    <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
+                                        <h5><b>OOP</b></h5>
+                                        <a href="#" class="btn btn-read">Read</a>
+                                    </div>
+                                    <hr class="mt-2 mb-1">
+                                    <p style="font-size: small; margin-top: 0; margin-bottom: 0;">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt..  
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="card-notes p-2">
-                            <img src="Gif 3.gif" alt="">
-                            <div class="mt-2">
-                                <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
-                                    <h5><b>LOGARITMA</b></h5>
-                                    <a href="#" class="btn btn-more">More</a>
-                                </div>
-                                <hr class="mt-2 mb-1">
-                                <p style="font-size: small; margin-top: 0; margin-bottom: 0;">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt..  
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="card-notes p-2">
-                            <img src="Gif 3.gif" alt="">
-                            <div class="mt-2">
-                                <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
-                                    <h5><b>LOGARITMA</b></h5>
-                                    <a href="#" class="btn btn-more">More</a>
-                                </div>
-                                <hr class="mt-2 mb-1">
-                                <p style="font-size: small; margin-top: 0; margin-bottom: 0;">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt..  
-                                </p>
-                            </div>
-                        </div>
                     </div>
-                </div>
-              </div>
-      
-              <!-- To Do List -->
-              <div class="col-lg-4 col-md-12">
-                <div class="card p-3 h-100 content">
-                    <h5 class="m-0">To Do List</h5>
-                    <hr class="mt-2 mb-1">
+                  </div>
+          
+                  <!-- To Do List -->
+                  <div class="col-md-4">
+                    <div class="card p-3 h-100 content">
+                      <!-- Isi konten to-do list di sini -->
+                      <h5 class="m-0">To Do List</h5>
+                      <hr class="mt-2 mb-1">
 
-                    <div class="to-do-list" style="font-size: medium;">
+                      <div class="to-do-list" style="font-size: mediumj;">
                         <label style="display: flex; align-items: center; gap: 8px;">
                             <input type="checkbox" />
                             Calculus: Task 1.2
@@ -497,21 +540,17 @@
                             <input type="checkbox" />
                             Calculus: Task 1.2
                         </label>
+
+                      </div>
+                      
                     </div>
+                  </div>
+
                 </div>
+          
               </div>
-            </div>
+      
+          </div>
         </div>
-      </div>
-    </div>
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Toggle sidebar on mobile
-        document.getElementById('sidebarToggle').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('mainContent').classList.toggle('active');
-        });
-    </script>
-</body>
-</html>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      </body>
