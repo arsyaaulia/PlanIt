@@ -9,7 +9,6 @@
     <script src="js/bootstrap.bundle.min.js"></script>
 
     <style>
-
         .row {
             display: flex;
             align-items: stretch;
@@ -43,24 +42,15 @@
             border-radius:8px;
         }
 
-        .btn-sidebar-wrap:hover, .btn-sidebar-wrap:focus{
-            background-color: #4a4a4a;
-        }
-
         .sidebar{
             height: 100vh;
             width: 200px;
+            background: #383838;
             color: white;
             display: flex;
             align-items: stretch;
-            position: fixed;
             --bs-offcanvas-bg:#383838;
-            background: #383838;
-        }
-
-        .sidebar{
-            --bs-offcanvas-bg:#383838;        /* ganti warna var Bootstrap */
-            background:#383838 !important;    /* paksa latar gelap di desktop */
+            position: fixed;
         }
 
         .btn-sidebar{
@@ -85,112 +75,6 @@
             color: #F6F6F6;
             border-color:#383838 ;
         }
-        
-        .main-content{
-            margin-left: 200px;
-        }
-
-        .content{
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border: 1px solid #383838;
-            border-radius: 4px;
-        }
-
-        .search-bar{
-            border: 1px solid #383838;
-            border-radius: 20px;
-        }
-
-        .btn-search{
-            background-color: #383838;
-            width: 150px;
-        }
-
-        .btn-search:hover{
-            background-color: #383838e0;
-            border-color: #383838;
-            color: white;
-        }
-
-        .session-detail{
-            background-color: #6c757d;
-            color: white;
-            border: 1px solid #6c757d;
-            border-radius: 20px;
-            margin-top: 10px;
-            text-align: center;
-            margin-right: 10px;
-            height: 30px;
-        }
-
-        .btn-add-notes{
-            background-color: #383838;
-            color: #F6F6F6;
-            border: 1px solid #383838;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            
-        }
-
-        .btn-add-notes:hover{
-            background-color: #383838e0;
-            border-color: #383838;
-            color: white;
-        }
-
-        .catatan-mk-sekarang{
-            background-color: white;
-            border: 1px solid #383838;
-            border-radius: 6px;
-            display: flex;
-            
-        }
-
-        .catatan-mk-sekarang img{
-            width: 160px;
-            height: 110px;
-            border-radius: 4px;
-            
-        }
-
-        .btn-more{
-            background-color: #ffffff;
-            color: #383838;
-            align-items: center;
-            height: 35x;
-            max-height: 35px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-more:hover{
-            background-color:  #ffffffeb;
-            color: #383838;
-            font-weight: bold;
-            border: 1px solid #383838;
-            box-shadow: none;
-        }
-
-        .btn-more-sm{
-            background-color: #ffffff;
-            color: #383838;
-            width: 60px;
-            max-width: 60px;
-            min-width: 60px;
-            height: 25px;
-            text-align: center;
-            line-height: 0.9;
-            font-size: smaller;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-sm:hover{
-            background-color:  #ffffffeb;
-            color: #383838;
-            font-weight: bold;
-            border: 1px solid #383838;
-            box-shadow: none;
-        }
 
         .btn-read{
             background-color: #383838;
@@ -212,345 +96,228 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
         }
 
+        .btn-pajangan{
+            background-color: #6c757d;
+            color: white;
+            border: 0px solid #6c757d;
+            border-radius: 20px;
+           
+        }
+
+        .btn-add-notes{
+            background-color: #383838;
+            color: #F6F6F6;
+            border: 1px solid #383838;
+            display: flex;
+        }
+
+        .btn-add-notes:hover{
+            background-color: #383838e0;
+            border-color: #383838;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .main-content{
+            margin-left: 200px;
+        }
+
+        .search-bar{
+            border: 1px solid #383838;
+            border-radius: 20px;
+        }
+
+        .btn-search{
+            background-color: #383838;
+            width: 150px;
+        }
+
+        .btn-search:hover{
+            background-color: #383838e0;
+            border-color: #383838;
+            color: white;
+        }
+
+        .content{
+            border: 1px solid #383838;
+        }
+
+        .sidebar{
+            --bs-offcanvas-bg:#383838;        /* ganti warna var Bootstrap */
+            background:#383838 !important;    /* paksa latar gelap di desktop */
+        }
+
+        
+        .btn-sidebar-wrap:hover,
+        .btn-sidebar-wrap:focus{
+            background:#4a4a4a;
+        }
+        .card-induk-current-notes{
+            border: 1px solid #383838;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-notes-induk{
+            border: 1px solid #383838;
+            border-radius: 4px;
+        }
+
+        .card-image{
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #383838;
+        }
+        
         .header-catatan-mk-sekarang{
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .header-catatan-mk-sekarang h5{
-            line-height: 0.9;
-            margin: 0;
-        }
-
-        .upcoming-event{
-            background-color: #f6f6f6;
-            border: 1px solid #383838;
-            border-radius: 5px;
-        }
-
-        .card-notes{
-            background-color: #F6F6F6;
-            width: 260px;
-            height: 300px;
-            margin-top: 10px;
-            border: 1px solid #383838;
-            border-radius:6px ;
-        }
-
-        .card-notes img{
-            width: 240px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 1px solid #383838;
-        }
-
-        .current-notes{
-            display: flex;
-        }
-
-        /* Desktop */
-        @media(min-width: 992px){
-            .main-content{
-                margin-left: 200px ;
-            }
-        }
-
-        /* hp */
-        @media(max-width: 991.98px){
-            .main-content{
-                margin-left: 0px ; 
-            }
-
-            
-        }
         
+        
+        @media (min-width: 992px) {           /* ≥ lg, sidebar tampak statis */
+            .main-content {
+                margin-left: 200px;               /* lebar sidebarmu */
+            }
+        }
+
+        @media (max-width: 991.98px) {        /* < lg, sidebar tersembunyi */
+            .main-content {
+                margin-left: 0; 
+                              
+            }
+
+            .text-content{
+            font-size: small;
+        }
+        }
     </style>
 </head>
 
 <body>
-    <!-- SIDEBAR -->
-    <body>
+    
+    <body style="background-color: #fefefe;">
         <div class="container-fluid">
           <div class="row no-gutters">
-            
-            <!-- Hanya tampil di < lg -->
+            <!-- Hanya muncul di layar < lg -->
             <div class="d-lg-none d-flex top-0 start-0 m-3">
-                <button class="btn btn-sidebar-wrap" 
-                    type="button" 
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offSidebar" 
-                    aria-controls="offSidebar">
-                    <i class="bi bi-list" style="font-size:1.5rem;"></i>
-                </button>
-                <h2 class="ms-2">PlantIt</h2>
-
-
+                <div class="d-flex ">
+                    <button class="btn btn-sidebar-wrap "
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offSidebar"
+                        aria-controls="offSidebar">
+                        <i class="bi bi-list" style="font-size:1.5rem;"></i>
+                    </button>
+                    <h3 class="ms-2">PlantIt</h3>
+                    
+                </div>   
             </div>
 
             <!-- Sidebar -->
             <div id="offSidebar" class="offcanvas-lg offcanvas-start text-white sidebar" tabindex="-1">
                 <div class="offcanvas-header d-lg-none">
-                    <h5 class="mb-0">PlantIt</h5>
-                    <button type="button" class="btn-close btn-close-white" 
-                    data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#offSidebar">
-                        
+                    <h5 class="mb-0">PlanIt</h5>
+                    <button type="button" class="btn-close btn-close-white"
+                            data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#offSidebar">
                     </button>
                 </div>
 
-                <div class="offcanvas-body p-3 d-flex flex-column align-items-start">
+                <div class=" offcanvas-body p-3 d-flex flex-column align-items-start">
+                    <!-- ===== isi sidebar MU tetap sama di sini ===== -->
                     <h3 class="mb-4 mt-4 d-none d-lg-block">PlanIt</h3>
 
-                    <a href="profile.html" class="btn btn-sidebar w-100 mt-2 mb-3 text-start">
-                        <i class="bi bi-person-fill me-2"></i> Profile
+                    <a href="profile.html"   class="btn btn-sidebar w-100 mt-2 mb-3 text-start">
+                    <i class="bi bi-person-fill me-2"></i> Profile
                     </a>
-                    <a href="#" class="btn btn-sidebar-active w-100 mb-3 text-start">
-                        <i class="bi bi-house-fill me-2"></i> Dashboard
+                    <a href="home.html" class="btn btn-sidebar-active w-100 mb-3 text-start">
+                    <i class="bi bi-house-fill me-2"></i> Dashboard
                     </a>
                     <a href="notes.html" class="btn btn-sidebar w-100 mb-3 text-start">
-                        <i class="bi bi-book-fill me-2"></i> Notes
+                    <i class="bi bi-book-fill me-2"></i> Notes
                     </a>
                     <a href="calendar.html" class="btn btn-sidebar w-100 mb-3 text-start">
-                        <i class="bi bi-calendar-fill me-2"></i> Calendar
+                    <i class="bi bi-calendar-fill me-2"></i> Calendar
                     </a>
                     <a href="setting.html" class="btn btn-sidebar w-100 mb-3 text-start">
-                        <i class="bi bi-gear-fill me-2"></i> Setting
+                    <i class="bi bi-gear-fill me-2"></i> Setting
                     </a>
                 </div>
             </div>
+
       
             <!-- Main Content -->
-            <div class="col main-content mb-4">
+            <div class="main-content col-md-10 col-sm-12">
 
-                <!-- Header: User Info + Search Bar -->
-                <div class="d-none d-lg-flex  justify-content-between align-items-center mb-4 mt-4">
-                  <div class="align-items-center">
-                    <img src="https://i.pinimg.com/736x/bd/af/6d/bdaf6d8fe7871aa0a0fdf89f0587fd69.jpg" alt="User Avatar" class="rounded-circle me-2" width="40" height="40">
-                    <div>
-                      <strong class="p-0 m-0">User</strong><br>
-                      <small class="text-muted m-0 p-0">Start your day with PlanIt</small>
+                <div class="container-fluid">
+                    <div class="d-none d-lg-flex d-flex justify-content-between align-items-center mb-4 mt-4">
+                        <div class="d-none d-lg-flex align-items-center">
+                          <img src="https://i.pinimg.com/736x/bd/af/6d/bdaf6d8fe7871aa0a0fdf89f0587fd69.jpg" alt="User Avatar" class="rounded-circle me-2" width="40" height="40">
+                          <div>
+                            <strong class="p-0 m-0">User</strong><br>
+                            <small class="text-muted m-0 p-0">Start your day with PlanIt</small>
+                          </div>
+                        </div>
+                        <div>
+                          <form class="d-flex" role="search">
+                              <input class="search-bar form-control me-2" type="search" placeholder="Find something here.." aria-label="Search">
+                              <button class="btn btn-search" type="submit">
+                                <i class="bi bi-search"></i> Search
+                              </button>
+                          </form>
+                        </div>
+                        
                     </div>
-                  </div>
-                  <div>
-                    <form class="d-flex" role="search">
-                        <input class="search-bar form-control me-2" type="search" placeholder="Find something here.." aria-label="Search">
-                        <button class="btn btn-search" type="submit">
-                          <i class="bi bi-search"></i> Search
-                        </button>
-                    </form>
-                  </div>
-                  
-                </div>
-          
-                <!-- Card Section -->
-                <div class="row g-4 ">
+                     
+                    
 
-                  <!-- Ongoing Activities -->
-                  <div class="col-md-8 ">
-                    <div class="card p-3 h-100 content"
-                        style="background-color: #E3F1FE;">
-                        <!-- Isi konten ongoing activities di sini -->
-                            <h5>Ongoing Activities</h5>
-                            <hr style="margin-top: 0; margin-bottom: 10px;">
-                            <h3><b>WEBSITE PROGRAMMING</b></h3>
-                            
-                            <div class="d-flex align-items-center">
-                                <p class="session-detail" style="width: 140px;"> 
-                                    <i class="bi bi-clock-fill"></i> 
-                                    08.20 - 10.50
-                                </p>
-                                <div>
-                                    <p class="session-detail" style="width: 90px;"> 
-                                        <i class="bi bi-door-closed-fill"></i> 
-                                        A504
-                                    </p>
-                                </div>
-                                <div>
-                                    <button class="btn btn-add-notes" type="button" href="#">
+                    <div class="row g-4">
+
+                        <!-- Ongoing Activities -->
+                         <div class="col-md-8">
+
+                            <div class="card p-3 h-100 content " style="background-color: #E3F1FE;">
+                                
+                                <!-- Isi Konten Ongoing Activities -->
+                                <h5>Ongoing Activities</h5>
+                                <hr style="margin-top: 0; margin-bottom: 10px;">
+                                <h3><b>WEBSITE PROGRAMMING</b></h3>
+
+                                <div class="d-flex align-items-center gap-2">
+                                    <button class="btn-pajangan ps-3 pe-3" type="button" href="#">
+                                        <i class="bi bi-clock-fill"></i> 08.20 - 10.50
+                                    </button>
+                                    
+                                    <button class="btn-pajangan ps-3 pe-3" type="button" href="#">
+                                        <i class="bi bi-door-closed-fill"></i> A504
+                                    </button>
+                                    
+                                    <button class="btn btn-add-notes ps-3 pe-3" type="button" href="#">
                                         <i class="bi bi-plus-square-fill me-2"></i> Add New Note
                                     </button>
+                                    
                                 </div>
+
+                                <hr style="margin-top: 10px; margin-bottom: 10px;">
+
                             </div>
-
-
-                            <hr style="margin-top: 0; margin-bottom: 10px;">
-                            <div class="catatan-mk-sekarang p-2 mb-2">
-                                <img src="Gif 1.gif" alt="">
-                                <div class="m-2">
-                                    <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
-                                        <h5><b>HTML & CSS</b></h5>
-                                        <a href="#" class="btn btn-read">Read</a>
-                                    </div>
-                                    <hr class="mt-2 mb-1">
-                                    <p style="font-size: small; margin-top: 0; margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt dictum justo, vitae molestie arcu egestas a. Integer accumsan tempus lectus quis lacinia. Aenean at nisl facilisis lectus semper ultrices.  </p>
-                                </div>
-                            </div>
-
-                            <div class="catatan-mk-sekarang p-2">
-                                <img src="Gif 2.gif" alt="">
-                                <div class="m-2">
-                                    <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
-                                        <h5><b>FRONTEND</b></h5>
-                                        <a href="#" class="btn btn-read">Read</a>
-                                    </div>
-                                    <hr class="mt-2 mb-1">
-                                    <p style="font-size: small; margin-top: 0; margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt dictum justo, vitae molestie arcu egestas a. Integer accumsan tempus lectus quis lacinia. Aenean at nisl facilisis lectus semper ultrices. </p>
-                                </div>
-                            </div>
-
-                            <button class="btn btn-more mt-2">More</button>
-
+                         </div>
                     </div>
-                  </div>
-          
-                  <!-- Upcoming Events -->
-                  <div class="col-md-4">
-                    <div class="card p-3 h-100 content">
-                      <!-- Isi konten upcoming event di sini -->
-                       <div class="d-flex justify-content-between">
-                            <h5>Upcoming Event</h5>
-                            <button class="btn btn-sm btn-more-sm" style="width: 60px;">More</button>
-
-                       </div>
-                      
-                      <hr class="mt-0 mb-1">
-
-                      <h6 class="pt-1"><b>TODAY</b></h6>
-
-                      <div class="upcoming-event p-2 mb-2">
-                        <h5 class="p-0 m-0">Database</h5>
-                        <div class="d-flex">
-                            <p class="session-detail" style="width: 140px;">
-                                <i class="bi bi-clock-fill"></i> 
-                                08.20 - 10.50
-                            </p>
-                            <p class="session-detail" style="width: 90px;">
-                                <i class="bi bi-door-closed-fill"></i> 
-                                A504
-                            </p>
-                        </div>
-                      </div>
-
-                      <div class="upcoming-event p-2 mb-1">
-                        <h5 class="p-0 m-0">Database</h5>
-                        <div class="d-flex">
-                            <p class="session-detail" style="width: 140px;">
-                                <i class="bi bi-clock-fill"></i> 
-                                10.50 - 11.30
-                            </p>
-                            <p class="session-detail" style="width: 90px;">
-                                <i class="bi bi-door-closed-fill"></i> 
-                                A302
-                            </p>
-                        </div>
-                      </div>
-
-                      <hr>
-                      <h6 class="pt-1"><b>FRIDAY</b></h6>
-                      <div class="upcoming-event p-2 mb-2">
-                        <h5 class="p-0 m-0">Becoming Indonesia</h5>
-                        <div class="d-flex">
-                            <p class="session-detail" style="width: 140px;">
-                                <i class="bi bi-clock-fill"></i> 
-                                08.20 - 10.50
-                            </p>
-                            <p class="session-detail" style="width: 90px;">
-                                <i class="bi bi-door-closed-fill"></i> 
-                                A410
-                            </p>
-                        </div>
-                      </div>
-
-
-                    </div>
-                  </div>
-          
-                  <!-- Your Current Notes -->
-                  <div class="col-md-8">
-                    <div class=" p-3 h-100 content">
-                      <!-- Isi konten your notes di sini -->
-                       <div class="d-flex justify-content-between">
-                            <h5>Your Current Notes</h5>
-                            <button class="btn btn-sm btn-more-sm" style="width: 60px;">More</button>
-                       </div>
-                      
-                      <hr class="m-0 p-0">
-                        <div class="current-notes justify-content-between ">
-                            <div class="card-notes p-2">
-                                <img src="Gif 3.gif" alt="">
-                                <div class="mt-2">
-                                    <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
-                                        <h5><b>MY PROFILE</b></h5>
-                                        <a href="#" class="btn btn-read">Read</a>
-                                    </div>
-                                    <hr class="mt-2 mb-1">
-                                    <p style="font-size: small; margin-top: 0; margin-bottom: 0;">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt..  
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="card-notes p-2">
-                                <img src="Gif 5.gif" alt="">
-                                <div class="mt-2">
-                                    <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
-                                        <h5><b>BOOTSTRAP</b></h5>
-                                        <a href="#" class="btn btn-read">Read</a>
-                                    </div>
-                                    <hr class="mt-2 mb-1">
-                                    <p style="font-size: small; margin-top: 0; margin-bottom: 0;">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt..  
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="card-notes p-2">
-                                <img src="Gif 4.gif" alt="">
-                                <div class="mt-2">
-                                    <div class="header-catatan-mk-sekarang d-flex justify-content-between align-items-center">
-                                        <h5><b>OOP</b></h5>
-                                        <a href="#" class="btn btn-read">Read</a>
-                                    </div>
-                                    <hr class="mt-2 mb-1">
-                                    <p style="font-size: small; margin-top: 0; margin-bottom: 0;">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis semper purus, non vehicula dui aliquam sed. Mauris tincidunt..  
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                  </div>
-          
-                  <!-- To Do List -->
-                  <div class="col-md-4">
-                    <div class="card p-3 h-100 content">
-                      <!-- Isi konten to-do list di sini -->
-                      <h5 class="m-0">To Do List</h5>
-                      <hr class="mt-2 mb-1">
-
-                      <div class="to-do-list" style="font-size: mediumj;">
-                        <label style="display: flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" />
-                            Calculus: Task 1.2
-                        </label>
-
-                        <label style="display: flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" />
-                            Calculus: Task 1.2
-                        </label>
-
-                      </div>
-                      
-                    </div>
-                  </div>
-
-                </div>
-          
-              </div>
+                    
+                    
+                    
+                        
+                    
+                </div>   
+            </div>
       
           </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
       </body>
+      
+        
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>

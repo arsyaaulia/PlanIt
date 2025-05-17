@@ -75,6 +75,26 @@
             color: #F6F6F6;
             border-color:#383838 ;
         }
+
+        .btn-read{
+            background-color: #383838;
+            width: 60px;
+            max-width: 60px;
+            min-width: 60px;
+            height: 25px;
+            text-align: center;
+            line-height: 0.9;
+            font-size: smaller;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-read:hover{
+            background-color: #383838e0;
+            border-color: #383838;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+        }
         
         .main-content{
             margin-left: 200px;
@@ -111,6 +131,29 @@
             background:#4a4a4a;
         }
 
+        .card-induk-current-notes{
+            border: 1px solid #383838;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-notes-induk{
+            border: 1px solid #383838;
+            border-radius: 4px;
+        }
+
+        .card-image{
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #383838;
+        }
+        
+        .header-catatan-mk-sekarang{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         
         @media (min-width: 992px) {           /* ≥ lg, sidebar tampak statis */
             .main-content {
@@ -121,7 +164,7 @@
         @media (max-width: 991.98px) {        /* < lg, sidebar tersembunyi */
             .main-content {
                 margin-left: 0; 
-                padding-top: 60px;                  /* bebas, full‑width */
+                              
             }
         }
     </style>
@@ -129,19 +172,22 @@
 
 <body>
     
-    <body>
+    <body style="background-color: #fefefe;">
         <div class="container-fluid">
           <div class="row no-gutters">
             <!-- Hanya muncul di layar < lg -->
-            <div class="d-lg-none d-flex position-fixed top-0 start-0 m-3">
-                <button class="btn btn-sidebar-wrap "
-                    type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offSidebar"
-                    aria-controls="offSidebar">
-                    <i class="bi bi-list" style="font-size:1.5rem;"></i>
-                </button>
-                <h3 class="ms-2">PlantIt</h3>
+            <div class="d-lg-none d-flex top-0 start-0 m-3">
+                <div class="d-flex ">
+                    <button class="btn btn-sidebar-wrap "
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offSidebar"
+                        aria-controls="offSidebar">
+                        <i class="bi bi-list" style="font-size:1.5rem;"></i>
+                    </button>
+                    <h3 class="ms-2">PlantIt</h3>
+                    
+                </div>   
             </div>
 
             <!-- Sidebar -->
@@ -160,7 +206,7 @@
                     <a href="profile.html"   class="btn btn-sidebar w-100 mt-2 mb-3 text-start">
                     <i class="bi bi-person-fill me-2"></i> Profile
                     </a>
-                    <a href="home.html" class="btn btn-sidebar w-100 mb-3 text-start">
+                    <a href="index.html" class="btn btn-sidebar w-100 mb-3 text-start">
                     <i class="bi bi-house-fill me-2"></i> Dashboard
                     </a>
                     <a href="notes.html" class="btn btn-sidebar w-100 mb-3 text-start">
@@ -169,7 +215,7 @@
                     <a href="calendar.html" class="btn btn-sidebar w-100 mb-3 text-start">
                     <i class="bi bi-calendar-fill me-2"></i> Calendar
                     </a>
-                    <a href="#" class="btn btn-sidebar-active w-100 mb-3 text-start">
+                    <a href="setting.html" class="btn btn-sidebar-active w-100 mb-3 text-start">
                     <i class="bi bi-gear-fill me-2"></i> Setting
                     </a>
                 </div>
@@ -177,27 +223,32 @@
 
       
             <!-- Main Content -->
-            <div class="col main-content">
-
-                <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
-                  <div class="d-none d-lg-flex align-items-center">
-                    <img src="https://i.pinimg.com/736x/bd/af/6d/bdaf6d8fe7871aa0a0fdf89f0587fd69.jpg" alt="User Avatar" class="rounded-circle me-2" width="40" height="40">
-                    <div>
-                      <strong>User</strong><br>
-                      <small class="text-muted">Start your day with PlanIt</small>
+            <div class="main-content col-md-10 col-sm-12">
+                <div class="container-fluid">
+                    <div class="d-none d-lg-flex d-flex justify-content-between align-items-center mb-4 mt-4">
+                        <div class="d-none d-lg-flex align-items-center">
+                          <img src="https://i.pinimg.com/736x/bd/af/6d/bdaf6d8fe7871aa0a0fdf89f0587fd69.jpg" alt="User Avatar" class="rounded-circle me-2" width="40" height="40">
+                          <div>
+                            <strong class="p-0 m-0">User</strong><br>
+                            <small class="text-muted m-0 p-0">Start your day with PlanIt</small>
+                          </div>
+                        </div>
+                        <div>
+                          <form class="d-flex" role="search">
+                              <input class="search-bar form-control me-2" type="search" placeholder="Find something here.." aria-label="Search">
+                              <button class="btn btn-search" type="submit">
+                                <i class="bi bi-search"></i> Search
+                              </button>
+                          </form>
+                        </div>
+                        
                     </div>
-                  </div>
-                  <form class="d-flex" role="search">
-                    <input class="search-bar form-control me-2" type="search" placeholder="Find something here.." aria-label="Search">
-                    <button class="btn btn-search" type="submit">
-                      <i class="bi bi-search"></i> Search
-                    </button>
-                  </form>
-                </div>  
-                
-                <div class="card">
-                    Setting Comming Soon
-                </div>
+                     
+                    
+
+                    <!-- P -->
+                    
+                </div>   
             </div>
       
           </div>
